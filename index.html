@@ -1428,20 +1428,6 @@
             }
         });
     </script>
-
-    <!-- Add navigation links with code tags for PC gaming aesthetic -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Format navbar links with code tags
-            const navLinks = document.querySelectorAll('.navbar-link');
-            navLinks.forEach(link => {
-                if (!link.textContent.includes('</')) {
-                    const text = link.textContent;
-                    link.textContent = `</${text}>`;
-                }
-            });
-        });
-    </script>
 </head>
 <body>
     <!-- Background music control -->
@@ -1472,11 +1458,11 @@
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="navbar-menu">
-                <li><a href="index.html" class="navbar-link active">&lt;/Home&gt;</a></li>
-                <li><a href="about.html" class="navbar-link">&lt;/AboutMe&gt;</a></li>
-                <li><a href="#skills" class="navbar-link">&lt;/Skills&gt;</a></li>
-                <li><a href="projects.html" class="navbar-link">&lt;/Projects&gt;</a></li>
-                <li><a href="#certifications" class="navbar-link">&lt;/Certifications&gt;</a></li>
+                <li><a href="index.html" class="navbar-link active">Home</a></li>
+                <li><a href="about.html" class="navbar-link">About Me</a></li>
+                <li><a href="#skills" class="navbar-link">Skills</a></li>
+                <li><a href="projects.html" class="navbar-link">Projects</a></li>
+                <li><a href="#certifications" class="navbar-link">Certifications</a></li>
             </ul>
         </div>
     </nav>

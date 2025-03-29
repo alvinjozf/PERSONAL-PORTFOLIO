@@ -231,32 +231,37 @@ p {
         }
 
 .navbar-link {
-            position: relative;
-    font-weight: 700;
-    padding: 0.5rem 0;
-    font-size: 1.8rem;
-        }
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--text-light);
+    padding: 0.5rem 1rem;
+    position: relative;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
 
 .navbar-link::after {
-            content: '';
-            position: absolute;
-    bottom: 0;
+    content: '';
+    position: absolute;
+    bottom: -2px;
     left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary-color);
-    transition: var(--transition-fast);
-        }
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
 
 .navbar-link:hover, 
 .navbar-link.active {
-            color: var(--primary-color);
-        }
+    color: var(--primary-color);
+    opacity: 1;
+}
 
 .navbar-link:hover::after,
 .navbar-link.active::after {
-            width: 100%;
-        }
+    width: 100%;
+}
 
 .navbar-toggle {
     display: none;
