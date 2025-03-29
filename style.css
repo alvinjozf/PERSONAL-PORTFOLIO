@@ -2180,13 +2180,14 @@ button[href*="project"],
 
 .certification-controls {
     background: rgba(255, 255, 255, 0.9);
-    width: 150px;
-    height: 40px;
+    width: 40px;
+    height: 90px;
     border-radius: 8px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 10px 0;
     margin: 10px auto;
 }
 
@@ -2198,10 +2199,16 @@ button[href*="project"],
     justify-content: center;
     color: #555;
     cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.control-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .control-arrow i {
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .certification-progress {
