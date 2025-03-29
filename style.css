@@ -2181,13 +2181,13 @@ button[href*="project"],
 .certification-controls {
     background: rgba(255, 255, 255, 0.9);
     width: 150px;
-    height: 70px;
+    height: 40px;
     border-radius: 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
-    margin-top: 20px;
+    margin: 10px auto;
 }
 
 .control-arrow {
@@ -2205,11 +2205,11 @@ button[href*="project"],
 }
 
 .certification-progress {
-    width: 90%;
+    width: 80%;
     height: 8px;
     background: rgba(56, 119, 255, 0.3);
     border-radius: 4px;
-    margin-top: 20px;
+    margin: 10px auto;
     position: relative;
     overflow: hidden;
 }
@@ -2227,29 +2227,11 @@ button[href*="project"],
 
 .certification-front.nasa-theme {
     background: rgb(17, 20, 27);
-}
-
-.typing-theme {
-    background: rgb(17, 20, 27);
-}
-
-.certification-logo {
-    width: 70px;
-    height: 70px;
-    background: rgba(56, 119, 255, 0.4);
-    border: 2px solid rgba(56, 119, 255, 0.5);
-    border-radius: 50%;
+    border: 2px solid #3877FF;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 15px;
-    box-shadow: 0 0 20px rgba(56, 119, 255, 0.6);
-}
-
-.certification-logo i {
-    font-size: 28px;
-    color: #3690ff;
-    filter: drop-shadow(0 0 10px rgba(56, 119, 255, 0.8));
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 15px;
 }
 
 .certification-title {
@@ -2258,14 +2240,14 @@ button[href*="project"],
     margin-bottom: 5px;
     color: white;
     text-align: center;
-    line-height: 1.2;
+    line-height: 1.1;
     text-shadow: 0 0 10px rgba(56, 119, 255, 0.2);
 }
 
 .certification-issuer {
     font-size: 16px;
     color: #3690ff;
-    margin-bottom: 0;
+    margin: 5px 0;
     text-align: center;
     letter-spacing: 0.5px;
 }
