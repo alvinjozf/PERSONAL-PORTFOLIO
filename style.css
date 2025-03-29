@@ -1035,34 +1035,64 @@ p {
     z-index: -1;
 }
 
-/* Music toggle button */
-.music-toggle {
+/* Music Player styling - Updated for center positioning between sections */
+.music-player {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    background: rgba(56, 119, 255, 0.2);
-    border: 1px solid rgba(56, 119, 255, 0.3);
-    color: var(--text-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-    cursor: pointer;
+    top: 5px;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+}
+
+.music-player-centered {
+    position: relative;
+    margin: -60px auto 80px;
     z-index: 100;
-    transition: var(--transition-fast);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.music-toggle:hover {
-    background: rgba(56, 119, 255, 0.3);
+.music-player-container {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid rgba(56, 119, 255, 0.4);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.music-player-text {
+    color: white;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    font-weight: 500;
+}
+
+.music-player-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(56, 119, 255, 0.7);
+}
+
+.music-player-btn:hover {
     transform: scale(1.1);
-    box-shadow: 0 5px 20px rgba(56, 119, 255, 0.4);
+    background: var(--primary-light);
 }
 
-.music-toggle i {
-    font-size: 1.6rem;
+.music-player-btn i {
+    font-size: 16px;
 }
 
 /* Media queries - maintain fixed sizes where possible */
@@ -2043,60 +2073,6 @@ p {
     .skill-card:hover {
         transform: translateY(-15px) scale(1.05);
     }
-}
-
-/* Music Player styling - Updated positioning to very top */
-.music-player {
-    position: fixed;
-    top: 5px;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-}
-
-.music-player-container {
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
-    border-radius: 50px;
-    padding: 6px 20px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    border: 1px solid rgba(56, 119, 255, 0.4);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-}
-
-.music-player-text {
-    color: white;
-    font-size: 0.7rem;
-    letter-spacing: 2px;
-    font-weight: 500;
-}
-
-.music-player-btn {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: var(--primary-color);
-    border: none;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 15px rgba(56, 119, 255, 0.6);
-}
-
-.music-player-btn:hover {
-    transform: scale(1.1);
-    background: var(--primary-light);
-}
-
-.music-player-btn i {
-    font-size: 12px;
 }
 
 /* Remove side social icons */
