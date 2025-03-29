@@ -2241,7 +2241,7 @@ button[href*="project"],
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     padding: 20px 15px;
 }
 
@@ -2275,15 +2275,16 @@ button[href*="project"],
     color: white;
     text-align: center;
     line-height: 1.1;
-    text-shadow: 0 0 10px rgba(56, 119, 255, 0.2);
+    margin-top: 15px;
 }
 
 .certification-issuer {
     font-size: 16px;
-    color: #3690ff;
+    color: #777;
     margin: 5px 0;
     text-align: center;
     letter-spacing: 0.5px;
+    line-height: 1.4;
 }
 
 .certification-subtitle {
@@ -2380,4 +2381,17 @@ button[href*="project"],
 
 .certification-card:nth-child(2) {
     animation-delay: 0.4s;
+}
+
+.view-button {
+    display: inline-block;
+    background: #3877FF;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 8px 60px;
+    border-radius: 20px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
 }
