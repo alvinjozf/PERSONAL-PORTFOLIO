@@ -846,26 +846,9 @@ p {
 }
 
 /* View all projects button */
-.view-all-container {
-    width: 100%;
-    text-align: center;
-    margin-top: 30px;
-    margin-bottom: 60px;
-}
-
+.view-all-container, 
 .view-all-container .cta-btn {
-    background: rgba(0, 0, 0, 0.2);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 10px 25px;
-    font-size: 0.9rem;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-}
-
-.view-all-container .cta-btn:hover {
-    background: rgba(56, 119, 255, 0.1);
-    border-color: var(--primary-color);
+    display: none;
 }
 
 /* Footer with glass effect */
@@ -899,8 +882,8 @@ p {
 }
 
 .footer-logo {
-    display: flex;
-    align-items: center;
+            display: flex;
+            align-items: center;
     gap: 20px;
     font-size: 2.6rem;
     font-weight: 800;
@@ -1043,7 +1026,7 @@ p {
     width: 100%;
     z-index: 1000;
     display: flex;
-    justify-content: center;
+            justify-content: center;
 }
 
 .music-player-centered {
@@ -1074,7 +1057,7 @@ p {
 .music-player-btn {
     width: 40px;
     height: 40px;
-    border-radius: 50%;
+            border-radius: 50%;
     background: var(--primary-color);
     border: none;
     color: white;
@@ -1126,7 +1109,7 @@ p {
     }
     
     .hero {
-        height: auto;
+                height: auto;
         min-height: 100vh;
     }
     
