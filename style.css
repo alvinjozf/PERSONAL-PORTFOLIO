@@ -820,7 +820,7 @@ p {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
 }
 
 .project-tag {
@@ -832,17 +832,7 @@ p {
 }
 
 .project-link {
-    color: var(--primary-color);
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-decoration: none;
-    background: transparent;
-    border: none;
-    padding: 0;
-}
-
-.project-link:hover {
-    color: var(--primary-light);
+    display: none;
 }
 
 /* View all projects button */
