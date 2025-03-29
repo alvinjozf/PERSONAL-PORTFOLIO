@@ -1856,286 +1856,96 @@ p {
 
 /* PC-specific enhancements */
 @media screen and (min-width: 1024px) {
-    /* PC optimization for hero section */
-    .hero {
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
+    /* Larger font sizes for PC display */
+    html {
+        font-size: 24px;
     }
     
-    .hero-content {
-        width: 100%;
-        max-width: 1800px;
-        margin: 0 auto;
-        gap: 8rem;
-    }
-    
-    /* Improved 3D PC Model with better perspective for desktop */
-    .pc-model {
-        width: 700px;
-        height: 700px;
-        transform: perspective(1000px) rotateY(-15deg) rotateX(10deg);
-        transform-style: preserve-3d;
-        transition: transform 0.5s ease;
-        position: relative;
-        margin-right: -50px;
-    }
-    
-    .pc-model:hover {
-        transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
-    }
-    
-    .pc-screen {
-        width: 650px;
-        height: 450px;
-        background: #1a1a1a;
-        border: 25px solid #333;
-        border-radius: 10px;
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 
-                    0 0 0 2px rgba(255, 255, 255, 0.05),
-                    inset 0 0 15px rgba(0, 0, 0, 0.5);
-        transform-style: preserve-3d;
-        transform: translateZ(10px);
-    }
-    
-    .pc-stand {
-        width: 200px;
-        height: 40px;
-        background: linear-gradient(to bottom, #444, #222);
-        margin: 0 auto;
-        border-radius: 5px;
-        position: relative;
-        z-index: -1;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        transform: translateY(-15px) rotateX(70deg);
-    }
-    
-    /* PC-specific improvements for text elements */
     .name {
-        font-size: 8rem;
+        font-size: 9rem;
         letter-spacing: -2px;
         margin-bottom: 1.5rem;
-        background: linear-gradient(to right, #ffffff, var(--primary-light), var(--accent-color));
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        text-shadow: 
-            0 0 80px rgba(56, 119, 255, 0.2),
-            0 0 30px rgba(56, 119, 255, 0.1);
-        position: relative;
-    }
-    
-    .name::after {
-        content: '';
-        position: absolute;
-        bottom: -10px;
-        left: 0;
-        width: 120px;
-        height: 6px;
-        background: var(--gradient-primary);
-        border-radius: 3px;
     }
     
     .role {
-        font-size: 3rem;
+        font-size: 3.5rem;
         margin-top: 2rem;
         margin-bottom: 1.5rem;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        color: var(--primary-color);
     }
     
     .bio {
-        font-size: 1.3rem;
-        line-height: 1.7;
-        color: var(--text-muted);
-        max-width: 800px;
-        padding-left: 2rem;
-        border-left: 6px solid var(--primary-color);
-        margin-bottom: 2.5rem;
+        font-size: 1.5rem;
+        line-height: 1.8;
+        max-width: 850px;
     }
     
-    /* Enhanced performance stats for PC */
-    .performance-stats {
-        position: fixed;
-        top: 0;
-        right: 0;
-        padding: 10px;
-        background: rgba(0, 0, 0, 0.7);
-        border-bottom-left-radius: 10px;
-        z-index: 1000;
-        font-family: monospace;
-        font-size: 0.75rem;
-        color: #fff;
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
+    .greeting {
+        font-size: 2.8rem;
     }
     
-    .stat-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .stat-value {
-        margin-left: 10px;
-        font-weight: bold;
-    }
-    
-    .fps-high {
-        color: #4caf50;
-    }
-    
-    .fps-medium {
-        color: #ffc107;
-    }
-    
-    .fps-low {
-        color: #f44336;
-    }
-    
-    /* Improved navigation for PC */
-    .navbar {
-        padding: 25px 0;
-    }
-    
-    .navbar-menu {
-        gap: 3rem;
-    }
-    
+    /* Larger navigation */
     .navbar-link {
-        position: relative;
+        font-size: 1.4rem;
+    }
+    
+    /* Larger CTA buttons */
+    .cta-btn {
+        font-size: 1.3rem;
+        padding: 1.5rem 3rem;
+    }
+    
+    /* Larger skills and project text */
+    .skill-name {
+        font-size: 2.2rem;
+    }
+    
+    .project-title {
+        font-size: 2.5rem;
+    }
+    
+    .project-description {
+        font-size: 1.4rem;
+    }
+    
+    .project-tag {
         font-size: 1.1rem;
-        transition: color 0.3s;
+        padding: 0.6rem 1.2rem;
     }
     
-    .navbar-link::after {
-        content: '';
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 3px;
-        background: var(--gradient-primary);
-        transition: width 0.3s ease;
-        border-radius: 3px;
-    }
-    
-    .navbar-link:hover::after,
-    .navbar-link.active::after {
-        width: 100%;
-    }
-    
-    /* Enhanced 3D code animation in PC model */
-    .pc-code {
-        padding: 15px;
-        font-family: monospace;
-        font-size: 0.7rem;
-        line-height: 1.5;
-        height: 100%;
-        overflow: hidden;
-        background: #121212;
-        animation: scrollCode 40s linear infinite;
-    }
-    
-    .pc-code-line {
-        margin-bottom: 2px;
-        white-space: nowrap;
-    }
-    
-    /* Code syntax highlighting */
-    .code-html {
-        color: #e06c75;
-    }
-    
-    .code-string {
-        color: #98c379;
-    }
-    
-    .code-comment {
-        color: #7f848e;
-    }
-    
-    .code-css {
-        color: #56b6c2;
-    }
-    
-    @keyframes scrollCode {
-        0% { transform: translateY(0); }
-        100% { transform: translateY(-50%); }
+    .section-title {
+        font-size: 5.5rem;
     }
 }
 
-/* Custom navigation styles for this version */
-@media screen and (min-width: 1024px) {
-    .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-        padding: 20px 0;
-    }
-    
-    .navbar-container {
-        max-width: 1800px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .navbar-menu {
-        display: flex;
-        list-style: none;
-        gap: 3.5rem;
-    }
-    
-    .navbar-link {
-        text-decoration: none;
-        color: var(--text-light);
-        font-weight: 600;
-        font-size: 1.2rem;
-        position: relative;
-        padding: 0.5rem 0;
-        transition: color 0.3s ease;
-    }
-    
-    .navbar-link:hover,
-    .navbar-link.active {
-        color: var(--primary-color);
-    }
-    
-    .navbar-link::before {
-        content: "</";
-        position: absolute;
-        left: -15px;
-        opacity: 0;
-        color: var(--primary-color);
-        transform: translateX(20px);
-        transition: all 0.3s ease;
-    }
-    
-    .navbar-link::after {
-        content: ">";
-        position: absolute;
-        right: -15px;
-        opacity: 0;
-        color: var(--primary-color);
-        transform: translateX(-20px);
-        transition: all 0.3s ease;
-    }
-    
-    .navbar-link:hover::before,
-    .navbar-link:hover::after,
-    .navbar-link.active::before,
-    .navbar-link.active::after {
-        opacity: 1;
-        transform: translateX(0);
-    }
+/* Increase main content font size */
+html {
+    font-size: 22px;
+}
+
+body {
+    font-size: 1.2rem;
+}
+
+h1 {
+    font-size: 6rem;
+}
+
+h2 {
+    font-size: 4rem;
+}
+
+h3 {
+    font-size: 3rem;
+}
+
+p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
+
+/* Web Developer header text */
+.role {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
 }
