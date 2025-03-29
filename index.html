@@ -1445,15 +1445,34 @@
 </head>
 <body>
     <!-- Background music control -->
-    <button id="musicToggle" class="music-toggle">
-        <i class="fas fa-volume-mute"></i>
-    </button>
+    <div class="music-player">
+        <span class="music-player-text">Listen while you explore</span>
+        <button id="musicToggle" class="music-player-btn">
+            <i class="fas fa-play"></i>
+        </button>
+    </div>
     <audio id="bgMusic" loop>
         <source src="music/background.mp3" type="audio/mp3">
     </audio>
 
     <!-- Background particles animation -->
     <div class="particles" id="particles-js"></div>
+
+    <!-- Side Social Icons -->
+    <div class="side-social-icons">
+        <a href="#" class="side-social-icon">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" class="side-social-icon">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" class="side-social-icon">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="#" class="side-social-icon">
+            <i class="fab fa-github"></i>
+        </a>
+    </div>
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -1482,32 +1501,17 @@
     <section class="hero">
         <div class="container hero-content">
             <div class="hero-text">
-                <p class="greeting">Hello <span>👋</span>, I'm</p>
-                <h1 class="name text-gradient">Alvin Joseph</h1>
+                <p class="greeting">Hi there <span>👋</span></p>
+                <h1 class="name">I'm Alvin Joseph</h1>
                 <h2 class="role">Web Developer</h2>
-                <p class="bio">Tech-Savvy Web Developer | Full Stack PHP & Front-End Developer | MCA Graduate | Crafting Secure & Scalable Web Solutions</p>
+                <p class="bio">Tech-Savvy Web Developer | Full Stack PHP & Front-End Developer | MCA Graduate | Crafting Secure & Scalable Web Solutions | Full Stack Web Architect from Changanserry, Kerala.</p>
                 
-                <div class="social-icons">
-                    <a href="#" class="social-icon" data-tooltip="Facebook">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                    <a href="#" class="social-icon" data-tooltip="Twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                    <a href="#" class="social-icon" data-tooltip="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                    <a href="#" class="social-icon" data-tooltip="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-            </div>
-
                 <div class="cta-buttons">
                     <a href="contact.html" class="cta-btn primary">
-                        <i class="fas fa-paper-plane"></i> Contact Me
+                        <i class="fas fa-paper-plane"></i> Hire Me
                     </a>
-                    <a href="projects.html" class="cta-btn secondary">
-                        <i class="fas fa-eye"></i> View Projects
+                    <a href="about.html" class="cta-btn secondary">
+                        <i class="fas fa-user"></i> About Me
                     </a>
                 </div>
             </div>
@@ -1852,12 +1856,12 @@
                     
                     if (isMusicPlaying) {
                         bgMusic.pause();
-                        icon.classList.remove('fa-volume-up');
-                        icon.classList.add('fa-volume-mute');
-                } else {
+                        icon.classList.remove('fa-pause');
+                        icon.classList.add('fa-play');
+                    } else {
                         bgMusic.play();
-                        icon.classList.remove('fa-volume-mute');
-                        icon.classList.add('fa-volume-up');
+                        icon.classList.remove('fa-play');
+                        icon.classList.add('fa-pause');
                     }
                     
                     isMusicPlaying = !isMusicPlaying;
