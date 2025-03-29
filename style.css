@@ -831,8 +831,13 @@ p {
     border-radius: 4px;
 }
 
-.project-link {
-    display: none;
+.project-link, 
+.view-project-btn,
+a[href*="project"],
+button[href*="project"],
+.project-card a,
+.project-card button {
+    display: none !important;
 }
 
 /* View all projects button */
