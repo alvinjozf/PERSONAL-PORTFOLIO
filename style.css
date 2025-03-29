@@ -1427,3 +1427,135 @@ p {
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
+
+/* Desktop-optimized large sizing */
+@media screen and (min-width: 1400px) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    .hero {
+        height: 1000px;
+    }
+    
+    .name {
+        font-size: 6.5rem;
+    }
+    
+    .role {
+        font-size: 2.6rem;
+    }
+    
+    .bio {
+        font-size: 1.3rem;
+        max-width: 700px;
+    }
+    
+    .pc-model {
+        width: 650px;
+        height: 650px;
+    }
+    
+    .pc-screen {
+        width: 520px;
+        height: 370px;
+        border-width: 20px;
+    }
+    
+    .pc-stand {
+        width: 180px;
+        height: 40px;
+    }
+    
+    .social-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.6rem;
+    }
+    
+    .cta-btn {
+        padding: 1.4rem 3rem;
+        font-size: 1.2rem;
+        min-width: 220px;
+    }
+    
+    .skill-card {
+        height: 250px;
+        padding: 35px;
+    }
+    
+    .skill-icon {
+        width: 90px;
+        height: 90px;
+    }
+    
+    .skill-icon i, .skill-icon img {
+        font-size: 42px;
+    }
+    
+    .project-card {
+        height: 520px;
+    }
+    
+    .project-image {
+        height: 280px;
+    }
+}
+
+/* Ultra-wide desktop optimization */
+@media screen and (min-width: 1800px) {
+    .container {
+        max-width: 1700px;
+    }
+    
+    html {
+        font-size: 18px;
+    }
+    
+    .hero {
+        height: 1100px;
+    }
+    
+    .name {
+        font-size: 7rem;
+    }
+    
+    .role {
+        font-size: 3rem;
+    }
+    
+    .pc-model {
+        width: 750px;
+        height: 750px;
+    }
+    
+    .pc-screen {
+        width: 580px;
+        height: 420px;
+        border-width: 22px;
+    }
+    
+    .pc-stand {
+        width: 200px;
+        height: 45px;
+    }
+    
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Fix for the navbar on wider screens */
+@media screen and (min-width: 1400px) {
+    .navbar-menu {
+        gap: 3rem;
+    }
+    
+    .navbar-link {
+        font-size: 1.1rem;
+    }
+}
