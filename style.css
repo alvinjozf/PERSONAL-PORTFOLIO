@@ -164,14 +164,20 @@ p {
 }
 
 .navbar-logo {
-    font-size: 2.6rem;
-    font-weight: 700;
-    color: var(--text-light);
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(to right, var(--text-light), var(--primary-light), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
     gap: 0.6rem;
     position: relative;
     overflow: hidden;
+    padding: 5px 15px;
+    border-radius: 10px;
 }
 
 .navbar-logo::before {
@@ -179,11 +185,11 @@ p {
     position: absolute;
     top: -75%;
     left: -75%;
-    width: 50px;
-    height: 50px;
-    background: rgba(56, 119, 255, 0.5);
+    width: 60px;
+    height: 60px;
+    background: rgba(56, 119, 255, 0.7);
     border-radius: 50%;
-    filter: blur(15px);
+    filter: blur(20px);
     opacity: 0;
     z-index: -1;
     animation: logoGlow 6s infinite;
@@ -201,14 +207,21 @@ p {
 }
 
 .navbar-logo .logo-icon {
-    font-size: 2.4rem;
-    color: var(--primary-color);
-    animation: logoSpin 4s infinite ease-in-out;
+    font-size: 3.2rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    z-index: 1;
+    position: relative;
+    filter: drop-shadow(0 0 8px rgba(56, 119, 255, 0.5));
+    animation: logoSpin 6s infinite ease-in-out;
 }
 
 @keyframes logoSpin {
     0% { transform: rotateY(0deg); }
-    50% { transform: rotateY(180deg); }
+    40% { transform: rotateY(180deg); }
+    60% { transform: rotateY(180deg); }
     100% { transform: rotateY(360deg); }
 }
 
@@ -970,11 +983,13 @@ p {
 .footer-logo {
     display: flex;
     align-items: center;
-    gap: 12px;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--text-light);
-    position: relative;
+    gap: 15px;
+    font-size: 2.2rem;
+    font-weight: 800;
+    background: linear-gradient(to right, var(--text-light), var(--primary-light), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 .footer-logo i {
@@ -1654,20 +1669,33 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 70px;
-    height: 70px;
+    width: 90px;
+    height: 90px;
+    margin-right: 10px;
 }
 
 .logo-glow {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, rgba(56, 119, 255, 0.7) 0%, rgba(56, 119, 255, 0) 70%);
+    background: radial-gradient(circle, rgba(56, 119, 255, 0.8) 0%, rgba(56, 119, 255, 0) 70%);
     border-radius: 50%;
-    filter: blur(15px);
-    opacity: 0.7;
+    filter: blur(20px);
+    opacity: 0.8;
     z-index: -1;
     animation: pulsateGlow 3s infinite ease-in-out;
+}
+
+.logo-glow::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 107, 107, 0.6) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(15px);
+    mix-blend-mode: screen;
+    animation: pulsateGlow 4s infinite ease-in-out reverse;
 }
 
 @keyframes pulsateGlow {
@@ -1676,27 +1704,110 @@ p {
         opacity: 0.7;
     }
     50% {
-        transform: scale(1.4);
+        transform: scale(1.6);
         opacity: 0.9;
     }
 }
 
-.navbar-logo .logo-icon {
-    font-size: 2.4rem;
-    color: var(--primary-color);
-    z-index: 1;
-    position: relative;
-    animation: logoSpin 4s infinite ease-in-out;
-}
-
-.footer-logo {
+.navbar-logo {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(to right, var(--text-light), var(--primary-light), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
-    gap: 12px;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--text-light);
+    gap: 0.6rem;
     position: relative;
+    overflow: hidden;
+    padding: 5px 15px;
+    border-radius: 10px;
+}
+
+.navbar-logo::before {
+    content: '';
+    position: absolute;
+    top: -75%;
+    left: -75%;
+    width: 60px;
+    height: 60px;
+    background: rgba(56, 119, 255, 0.7);
+    border-radius: 50%;
+    filter: blur(20px);
+    opacity: 0;
+    z-index: -1;
+    animation: logoGlow 6s infinite;
+}
+
+.navbar-logo .logo-icon {
+    font-size: 3.2rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    z-index: 1;
+    position: relative;
+    filter: drop-shadow(0 0 8px rgba(56, 119, 255, 0.5));
+    animation: logoSpin 6s infinite ease-in-out;
+}
+
+@keyframes logoSpin {
+    0% { transform: rotateY(0deg); }
+    40% { transform: rotateY(180deg); }
+    60% { transform: rotateY(180deg); }
+    100% { transform: rotateY(360deg); }
+}
+
+/* Logo pulse effect */
+@keyframes logoPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+/* Logo sparkle effect */
+.logo-container::before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: white;
+    border-radius: 50%;
+    filter: blur(2px);
+    top: 10%;
+    right: 20%;
+    opacity: 0;
+    animation: sparkle 8s infinite;
+}
+
+.logo-container::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    filter: blur(1px);
+    bottom: 15%;
+    left: 25%;
+    opacity: 0;
+    animation: sparkle 8s infinite 2s;
+}
+
+@keyframes sparkle {
+    0%, 100% { 
+        opacity: 0;
+        transform: scale(0);
+    }
+    5%, 15% { 
+        opacity: 1;
+        transform: scale(1);
+    }
+    20% { 
+        opacity: 0;
+        transform: scale(0);
+    }
 }
 
 /* Ensure everything scales appropriately when zoomed out */
