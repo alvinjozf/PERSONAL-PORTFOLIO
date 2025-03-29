@@ -809,9 +809,14 @@
         }
 
         .certificate-front {
-            background: var(--card-bg);
+            background-color: var(--card-bg, #1a1a1a);
+            border: 1px solid var(--border-color, #333);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
             position: relative;
-            border: 1px solid var(--border-color);
         }
 
         .certificate-overlay {
@@ -825,35 +830,297 @@
         }
 
         .certificate-thumbnail {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            display: none; /* Hide the static image */
         }
 
-        .certificate-content {
+        /* NASA Space Animation */
+        .certification-front.nasa-theme:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, #1a237e 0%, #000000 100%);
+            z-index: 0;
+        }
+        
+        .certification-front.nasa-theme:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 5px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 3px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 4px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
+            z-index: 1;
+            animation: twinkling 8s linear infinite;
+        }
+        
+        /* Add floating rocket */
+        .floating-rocket {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            z-index: 2;
+            opacity: 0.3;
+            animation: rocketFlight 15s linear infinite;
+        }
+        
+        .rocket-body {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 30px;
+            background: #ffffff;
+            border-radius: 50% 50% 0 0;
+        }
+        
+        .rocket-tail {
             position: absolute;
             bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 8px;
+            background: #ffffff;
+            border-radius: 0 0 50% 50%;
+        }
+        
+        .rocket-flame {
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 20px;
+            background: linear-gradient(to bottom, #ff9500, #ff5500);
+            border-radius: 50% 50% 20% 20%;
+            animation: flicker 0.3s ease-in-out infinite alternate;
+        }
+        
+        .rocket-window {
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 5px;
+            background: #00bcd4;
+            border-radius: 50%;
+        }
+        
+        @keyframes rocketFlight {
+            0% {
+                top: 110%;
+                left: 20%;
+                transform: rotate(-30deg);
+            }
+            25% {
+                top: 80%;
+                left: 70%;
+                transform: rotate(0deg);
+            }
+            50% {
+                top: 40%;
+                left: 50%;
+                transform: rotate(30deg);
+            }
+            75% {
+                top: 10%;
+                left: 30%;
+                transform: rotate(0deg);
+            }
+            100% {
+                top: -30%;
+                left: 60%;
+                transform: rotate(-30deg);
+            }
+        }
+        
+        @keyframes flicker {
+            0%, 100% {
+                height: 20px;
+                opacity: 1;
+            }
+            50% {
+                height: 15px;
+                opacity: 0.8;
+            }
+        }
+        
+        @keyframes twinkling {
+            from {
+                background-position: 0 0, 40px 60px, 130px 270px;
+            }
+            to {
+                background-position: -550px 550px, -350px 350px, -250px 250px;
+            }
+        }
+        
+        /* Typing Animation Background */
+        .certification-front.typing-theme {
+            background: #2c3e50;
+            overflow: hidden;
+        }
+        
+        .certification-front.typing-theme:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #2c3e50 0%, #1a1a1a 100%);
+            z-index: 0;
+        }
+        
+        .typing-animation {
+            position: absolute;
+            top: 0;
             left: 0;
             width: 100%;
-            padding: 20px;
-            z-index: 2;
-            text-align: left;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.15;
+            overflow: hidden;
         }
-
-        .certificate-logo {
-            background: var(--primary-color);
-            width: 50px;
-            height: 50px;
+        
+        .typing-line {
+            position: absolute;
+            height: 2px;
+            background: #3498db;
+            animation: typingLine 3s infinite;
+            box-shadow: 0 0 5px #3498db;
+            opacity: 0.7;
+            border-radius: 4px;
+        }
+        
+        .typing-line:nth-child(1) {
+            width: 60%;
+            top: 30%;
+            left: -100%;
+            animation-delay: 0s;
+        }
+        
+        .typing-line:nth-child(2) {
+            width: 40%;
+            top: 45%;
+            left: -100%;
+            animation-delay: 0.5s;
+        }
+        
+        .typing-line:nth-child(3) {
+            width: 70%;
+            top: 60%;
+            left: -100%;
+            animation-delay: 1s;
+        }
+        
+        .typing-line:nth-child(4) {
+            width: 30%;
+            top: 75%;
+            left: -100%;
+            animation-delay: 1.5s;
+        }
+        
+        .typing-key {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+            animation: keyPress 1s ease-in-out infinite;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .typing-key:nth-child(5) {
+            top: 20%;
+            left: 20%;
+            animation-delay: 0.2s;
+        }
+        
+        .typing-key:nth-child(6) {
+            top: 30%;
+            left: 60%;
+            animation-delay: 0.4s;
+        }
+        
+        .typing-key:nth-child(7) {
+            top: 50%;
+            left: 35%;
+            animation-delay: 0.6s;
+        }
+        
+        .typing-key:nth-child(8) {
+            top: 70%;
+            left: 75%;
+            animation-delay: 0.8s;
+        }
+        
+        .typing-key:nth-child(9) {
+            top: 80%;
+            left: 25%;
+            animation-delay: 1s;
+        }
+        
+        @keyframes typingLine {
+            0% {
+                left: -100%;
+            }
+            40%, 60% {
+                left: 0;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+        
+        @keyframes keyPress {
+            0%, 100% {
+                transform: translateY(0);
+                background: rgba(255, 255, 255, 0.1);
+            }
+            50% {
+                transform: translateY(2px);
+                background: rgba(255, 255, 255, 0.3);
+            }
+        }
+        
+        /* Enhance the certification logo to stand out more */
+        .certification-logo {
+            position: relative;
+            z-index: 3;
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(56, 119, 255, 0.5);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 15px;
+            margin: 15px auto 12px;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 15px rgba(56, 119, 255, 0.5);
         }
 
-        .certificate-logo i {
-            font-size: 24px;
-            color: white;
+        /* Update the content div to ensure it's above animations */
+        .certification-content {
+            position: relative;
+            z-index: 3; /* higher than animations */
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+            backdrop-filter: blur(2px);
+            margin: 0 10px;
         }
 
         .certificate-content h3 {
@@ -1554,9 +1821,14 @@
                 <!-- NASA Space App Challenge Certificate -->
                 <div class="certification-card">
                     <div class="certification-inner">
-                        <div class="certification-front">
-                            <div class="certification-overlay"></div>
-                            <img src="image/profile.jpeg" alt="NASA Space App Challenge" class="certification-thumbnail">
+                        <div class="certification-front nasa-theme">
+                            <!-- Remove the static overlay and image -->
+                            <div class="floating-rocket">
+                                <div class="rocket-body"></div>
+                                <div class="rocket-tail"></div>
+                                <div class="rocket-flame"></div>
+                                <div class="rocket-window"></div>
+                            </div>
                             <div class="certification-content">
                                 <div class="certification-logo">
                                     <i class="fas fa-rocket"></i>
@@ -1576,9 +1848,19 @@
                 <!-- Words per Minute Certificate -->
                 <div class="certification-card">
                     <div class="certification-inner">
-                        <div class="certification-front">
-                            <div class="certification-overlay"></div>
-                            <img src="image/profile.jpeg" alt="Words per Minute Certificate" class="certification-thumbnail">
+                        <div class="certification-front typing-theme">
+                            <!-- Remove the static overlay and image -->
+                            <div class="typing-animation">
+                                <div class="typing-line"></div>
+                                <div class="typing-line"></div>
+                                <div class="typing-line"></div>
+                                <div class="typing-line"></div>
+                                <div class="typing-key"></div>
+                                <div class="typing-key"></div>
+                                <div class="typing-key"></div>
+                                <div class="typing-key"></div>
+                                <div class="typing-key"></div>
+                            </div>
                             <div class="certification-content">
                                 <div class="certification-logo">
                                     <i class="fas fa-keyboard"></i>
