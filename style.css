@@ -2045,39 +2045,39 @@ p {
     }
 }
 
-/* Music Player styling - Updated positioning and design */
+/* Music Player styling - Updated positioning to very top */
 .music-player {
     position: fixed;
-    top: 20px;
+    top: 5px;
     left: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 1000;
     display: flex;
     justify-content: center;
 }
 
 .music-player-container {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
     border-radius: 50px;
-    padding: 8px 25px;
+    padding: 6px 20px;
     display: flex;
     align-items: center;
     gap: 15px;
-    border: 1px solid rgba(56, 119, 255, 0.3);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(56, 119, 255, 0.4);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
 .music-player-text {
     color: white;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     letter-spacing: 2px;
     font-weight: 500;
 }
 
 .music-player-btn {
-    width: 36px;
-    height: 36px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     background: var(--primary-color);
     border: none;
@@ -2087,7 +2087,7 @@ p {
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 0 15px rgba(56, 119, 255, 0.5);
+    box-shadow: 0 0 15px rgba(56, 119, 255, 0.6);
 }
 
 .music-player-btn:hover {
@@ -2096,7 +2096,7 @@ p {
 }
 
 .music-player-btn i {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 /* Remove side social icons */
