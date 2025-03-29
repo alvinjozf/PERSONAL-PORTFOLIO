@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PORTFOLIO WEBSITE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        :root {
+            --primary-color: #3877FF;
+            --primary-faded: rgba(56, 119, 255, 0.85);
+            --dark-color: #262525;
+            --dark-faded: rgba(38, 37, 37, 0.9);
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background: #f4f4f4;
+            perspective: 1000px;
+        }
+
+        /* Top Navigation Bar */
+        .navlist {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--dark-faded);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem 0;
+            gap: 2rem;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .navlist li {
+            list-style: none;
+        }
+
+        .navlist li a {
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 1rem;
+            color: #fff;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .navlist li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .navlist li a:hover {
+            color: var(--primary-color);
+        }
+
+        .navlist li a:hover:after {
+            width: 100%;
+        }
+
+        /* Portfolio Content */
+        .portfolio-container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            padding-top: 60px;
+            transform-style: preserve-3d;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .left-container, .right-container {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            transition: transform 0.5s ease;
+        }
+
+        .left-container {
+            background: var(--dark-faded);
+            width: 70%;
+            color: white;
+            position: relative;
+            padding: 50px;
+            box-shadow: 10px 0 30px rgba(0, 0, 0, 0.2);
+            transform: perspective(1000px) rotateY(3deg);
+            clip-path: polygon(0 0, 95% 0, 100% 100%, 0% 100%);
+        }
+
+        .left-container:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        /* Social Media Icons */
+        .icons {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .icons a {
+            text-decoration: none;
+            transform: translateZ(20px);
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .icons i {
+            font-size: 35px;
+            color: white;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+        }
+
+        .icons a:hover {
+            transform: translateZ(30px) scale(1.1);
+        }
+
+        .icons a:nth-child(1) i:hover { color: #1877F2; }
+        .icons a:nth-child(2) i:hover { color: #1DA1F2; }
+        .icons a:nth-child(3) i:hover { color: #0077B5; }
+        .icons a:nth-child(4) i:hover { color: #FF0000; }
+
+        /* Introduction Section */
+        .intro {
+            text-align: center;
+            max-width: 600px;
+            transform-style: preserve-3d;
+            transform: translateZ(20px);
+            transition: transform 0.5s ease;
+        }
+
+        .intro:hover {
+            transform: translateZ(40px);
+        }
+
+        .intro h1 { 
+            font-size: 50px; 
+            font-weight: 700; 
+            margin-bottom: 10px; 
+            text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
+            animation: float 3s infinite alternate ease-in-out;
+        }
+
+        .intro h2 { 
+            font-size: 30px; 
+            font-weight: 500; 
+            color: var(--primary-color); 
+            margin-bottom: 20px; 
+            filter: drop-shadow(0 2px 5px rgba(56, 119, 255, 0.4));
+            animation: float 3s infinite alternate ease-in-out 0.5s;
+        }
+
+        .intro p { 
+            font-size: 18px; 
+            font-weight: 300; 
+            line-height: 1.5; 
+            opacity: 0.85;
+            animation: float 3s infinite alternate ease-in-out 1s;
+        }
+
+        @keyframes float {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-5px); }
+        }
+
+        /* Buttons */
+        .buttons {
+            margin-top: 30px;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            transform-style: preserve-3d;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 18px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 8px;
+            color: white;
+            background: var(--primary-faded);
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateZ(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover:before {
+            left: 100%;
+        }
+
+        .btn:hover { 
+            background: var(--primary-color); 
+            transform: translateZ(30px) translateY(-5px);
+            box-shadow: 0 15px 20px rgba(56, 119, 255, 0.3);
+        }
+
+        .btn-outline { 
+            background: transparent; 
+            border: 2px solid var(--primary-color); 
+            color: var(--primary-color); 
+        }
+
+        .btn-outline:hover { 
+            background: var(--primary-color); 
+            color: white; 
+            transform: translateZ(30px) translateY(-5px);
+        }
+
+        /* Right Container */
+        .right-container {
+            width: 30%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-faded), #285fd1);
+            padding: 20px;
+            transform: perspective(1000px) rotateY(-3deg);
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+            clip-path: polygon(5% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .right-container:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .right-container img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+            border: 5px solid rgba(255, 255, 255, 0.7);
+            transform: translateZ(30px);
+            transition: all 0.5s ease;
+            animation: float 4s infinite alternate ease-in-out;
+        }
+
+        .right-container img:hover {
+            transform: translateZ(50px) scale(1.05);
+            border-color: white;
+            box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        /* 3D Effect for the whole container */
+        @media (hover: hover) {
+            .portfolio-container:hover .left-container {
+                transform: perspective(1000px) rotateY(1deg);
+            }
+            
+            .portfolio-container:hover .right-container {
+                transform: perspective(1000px) rotateY(-1deg);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .portfolio-container {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .left-container, .right-container {
+                width: 100%;
+                height: auto;
+                min-height: 50vh;
+                clip-path: none;
+                transform: none !important;
+            }
+            
+            .icons {
+                position: relative;
+                flex-direction: row;
+                justify-content: center;
+                left: 0;
+                top: 0;
+                transform: none;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <ul class="navlist">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Work</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Project</a></li>
+        <li><a href="#">Service</a></li>
+    </ul>
+
+    <div class="portfolio-container">
+        <div class="left-container">
+            <div class="icons">
+                <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <div class="intro">
+                <h1>Alvin Joseph</h1>
+                <h2>Web Developer</h2>
+                <p>Tech-Savvy Web Developer | Full Stack PHP & Front-End Developer | MCA Graduate | Crafting Secure & Scalable Web Solutions | Full Stack Web Architect</p>
+                <div class="buttons">
+                    <a href="#" class="btn">Hire Me</a>
+                    <a href="#" class="btn btn-outline">View Project</a>
+                </div>
+            </div>
+        </div>
+        <div class="right-container">
+            <img src="./profile.jpg" alt="Alvin Joseph" class="profile-img">
+        </div>
+    </div>
+</body>
+</html>

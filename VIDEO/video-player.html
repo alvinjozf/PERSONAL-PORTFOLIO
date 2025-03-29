@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Video Player</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3877FF;
+            --primary-dark: #2563d9;
+            --primary-light: #5e93ff;
+            --dark-bg: #111111;
+            --darker-bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --text-light: #ffffff;
+            --text-muted: #b0b0b0;
+            --border-color: #333;
+            --accent-green: #4CAF50;
+            --accent-yellow: #FFC107;
+        }
+        
+        body {
+            background-color: var(--darker-bg);
+            color: var(--text-light);
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+        
+        .video-container {
+            width: 800px;
+            height: 450px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 40px 0;
+        }
+        
+        video {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 10px;
+            object-fit: contain;
+            background-color: #000;
+        }
+        
+        /* Animated back button */
+        .back-button {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 100;
+            text-decoration: none;
+        }
+        
+        .back-circle {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .back-circle:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
+            transform: scale(0);
+            transition: all 0.5s ease;
+        }
+        
+        .back-button:hover .back-circle {
+            transform: scale(1.15) rotate(-360deg);
+            box-shadow: 0 15px 30px rgba(56, 119, 255, 0.7);
+        }
+        
+        .back-button:hover .back-circle:before {
+            transform: scale(1.5);
+            opacity: 0;
+        }
+        
+        .back-text {
+            position: absolute;
+            left: 75px;
+            top: 50%;
+            transform: translateY(-50%) translateX(-20px);
+            background: var(--card-bg);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(56, 119, 255, 0.3);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            white-space: nowrap;
+        }
+        
+        .back-button:hover .back-text {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+        }
+        
+        /* Video title styling */
+        .video-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            background: linear-gradient(to right, var(--accent-green), var(--primary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Responsive design */
+        @media (max-width: 850px) {
+            .video-container {
+                width: 95%;
+                height: auto;
+                aspect-ratio: 16/9;
+            }
+            
+            .back-circle {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
+            .back-text {
+                left: 65px;
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .video-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated back button -->
+    <a href="file:///C:/portfolio/projects.html" class="back-button">
+        <div class="back-circle">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+        <div class="back-text">Back to Projects</div>
+    </a>
+    
+    <!-- Video title - will be set by JavaScript -->
+    <h1 class="video-title">Project Video</h1>
+    
+    <!-- Video container -->
+    <div class="video-container">
+        <video controls autoplay id="project-video">
+            <source src="" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the video file name from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const videoFile = urlParams.get('video');
+            
+            if (videoFile) {
+                // Set video source - create a proper source element
+                const videoElement = document.getElementById('project-video');
+                const sourceElement = document.createElement('source');
+                sourceElement.src = videoFile;
+                sourceElement.type = 'video/mp4';
+                
+                // Clear any existing sources and add the new one
+                while (videoElement.firstChild) {
+                    videoElement.removeChild(videoElement.firstChild);
+                }
+                videoElement.appendChild(sourceElement);
+                videoElement.load(); // Important: reload the video with new source
+                
+                // Set title based on video name
+                const title = videoFile.includes('IPL') ? 'IPL Score Prediction Project' : 'E-FARMING Project';
+                document.querySelector('.video-title').textContent = title;
+            } else {
+                // Default fallback if no video specified
+                const videoElement = document.getElementById('project-video');
+                const sourceElement = document.createElement('source');
+                sourceElement.src = 'farmer.mp4';
+                sourceElement.type = 'VIDEO/mp4';
+                
+                // Clear any existing sources and add the new one
+                while (videoElement.firstChild) {
+                    videoElement.removeChild(videoElement.firstChild);
+                }
+                videoElement.appendChild(sourceElement);
+                videoElement.load();
+                
+                document.querySelector('.video-title').textContent = 'E-FARMING Project';
+            }
+        });
+    </script>
+</body>
+</html> 
