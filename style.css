@@ -2132,7 +2132,7 @@ button[href*="project"],
     }
 }
 
-/* Enhanced certificate cards with glowing blue effects */
+/* Update certification cards to match screenshot */
 .certification-card {
     width: 250px;
     height: 320px;
@@ -2168,41 +2168,69 @@ button[href*="project"],
     overflow: hidden;
     box-shadow: 0 0 20px rgba(56, 119, 255, 0.2);
     border: 1px solid rgba(56, 119, 255, 0.4);
+    display: flex;
+    flex-direction: column;
 }
 
 .certification-front {
     background-color: rgba(13, 19, 33, 0.9);
-    display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 20px;
 }
 
-.certification-front.nasa-theme:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at center, #1a237e 0%, #000000 100%);
-    z-index: 0;
+.certification-controls {
+    background: rgba(255, 255, 255, 0.9);
+    width: 150px;
+    height: 70px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 0 20px;
 }
 
-.certification-front.typing-theme:before {
+.control-arrow {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    cursor: pointer;
+}
+
+.certification-progress {
+    width: 90%;
+    height: 8px;
+    background: rgba(56, 119, 255, 0.3);
+    border-radius: 4px;
+    margin-top: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.certification-progress::after {
     content: '';
     position: absolute;
-    top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, #2c3e50 0%, #1a1a1a 100%);
-    z-index: 0;
+    top: 0;
+    height: 100%;
+    width: 30%;
+    background: #3690ff;
+    border-radius: 4px;
+}
+
+.certification-front.nasa-theme {
+    background: linear-gradient(to bottom, #111, #000);
+}
+
+.certification-front.typing-theme {
+    background: linear-gradient(to bottom, #111, #000);
 }
 
 .certification-logo {
-    position: relative;
-    z-index: 3;
     width: 80px;
     height: 80px;
     background: rgba(56, 119, 255, 0.2);
@@ -2211,9 +2239,12 @@ button[href*="project"],
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 20px auto 15px;
-    animation: pulse 2s infinite;
+    margin-bottom: 20px;
     box-shadow: 0 0 20px rgba(56, 119, 255, 0.6);
+}
+
+.typing-theme .certification-logo {
+    background: rgba(56, 119, 255, 0.4);
 }
 
 .certification-logo i {
@@ -2223,8 +2254,6 @@ button[href*="project"],
 }
 
 .certification-title {
-    position: relative;
-    z-index: 3;
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 10px;
@@ -2234,11 +2263,16 @@ button[href*="project"],
 }
 
 .certification-issuer {
-    position: relative;
-    z-index: 3;
     font-size: 16px;
     color: #3690ff;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+.certification-subtitle {
+    font-size: 16px;
+    color: #3690ff;
     text-align: center;
     letter-spacing: 0.5px;
 }
@@ -2248,8 +2282,6 @@ button[href*="project"],
     transform: rotateY(180deg);
     border: 1px solid rgba(56, 119, 255, 0.6);
     padding: 25px;
-    display: flex;
-    flex-direction: column;
     justify-content: space-between;
 }
 
@@ -2310,7 +2342,7 @@ button[href*="project"],
     justify-content: center;
     gap: 70px;
     margin-top: 50px;
-    perspective: 1000px;
+    margin-bottom: 50px;
 }
 
 @keyframes fadeInUp {
