@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alvin Joseph - Web Developer</title>
-    <!-- Font Awesome CDN for icons -->
+    <title>Alvin Joseph | Web Developer</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Animation library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Add mobile-friendly meta tags -->
+    <meta name="theme-color" content="#111111">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <style>
         :root {
             --primary-color: #3877FF;
@@ -182,17 +184,105 @@
             transform-style: flat;
         }
 
+        /* Enhanced text styling */
         .greeting {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 500;
             color: var(--primary-color);
-            margin-bottom: 20px;
-            transform: none;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            position: relative;
+            opacity: 0;
+            animation: slideUp 0.8s forwards;
+            animation-delay: 0.2s;
         }
 
         .greeting span {
             display: inline-block;
             animation: wave 2.5s ease-in-out infinite;
             transform-origin: 70% 70%;
+        }
+
+        .name {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            position: relative;
+            opacity: 0;
+            animation: slideUp 0.8s forwards;
+            animation-delay: 0.4s;
+            background: linear-gradient(to right, #ffffff, var(--primary-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .name::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color), var(--primary-light));
+            border-radius: 3px;
+        }
+
+        .role {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: slideUp 0.8s forwards;
+            animation-delay: 0.6s;
+            text-transform: uppercase;
+        }
+
+        .bio {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 30px;
+            max-width: 600px;
+            opacity: 0;
+            animation: slideUp 0.8s forwards;
+            animation-delay: 0.8s;
+            position: relative;
+            padding: 0 15px;
+        }
+        
+        .bio::before, .bio::after {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, var(--primary-color), transparent);
+            top: 0;
+        }
+        
+        .bio::before {
+            left: 0;
+        }
+        
+        .bio::after {
+            right: 0;
+        }
+        
+        /* Animation keyframes */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes wave {
@@ -206,67 +296,40 @@
             100% { transform: rotate(0deg); }
         }
 
-        .name {
-            font-size: 5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            transform: none;
-            text-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(to right, var(--text-light), var(--primary-light));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .role {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            font-weight: 600;
-            transform: none;
-        }
-
-        .bio {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            line-height: 1.8;
-            margin-bottom: 40px;
-            transform: none;
-        }
-
         /* Call to action buttons */
         .cta-buttons {
             display: flex;
             gap: 20px;
+            opacity: 0;
+            animation: slideUp 0.8s forwards;
+            animation-delay: 1s;
         }
 
         .cta-btn {
-            padding: 16px 32px;
-            font-size: 1rem;
+            padding: 14px 28px;
+            font-size: 0.95rem;
             font-weight: 600;
             border-radius: 50px;
             text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             position: relative;
             overflow: hidden;
-            transform-style: flat;
-            transform: none;
             letter-spacing: 0.5px;
             display: flex;
             align-items: center;
             gap: 8px;
+            z-index: 1;
         }
 
         .cta-btn.primary {
             background: var(--gradient-primary);
             color: white;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(56, 119, 255, 0.3);
         }
 
         .cta-btn.primary:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(56, 119, 255, 0.2);
+            box-shadow: 0 8px 20px rgba(56, 119, 255, 0.4);
         }
 
         .cta-btn.secondary {
@@ -284,11 +347,19 @@
         }
 
         .cta-btn:before {
-            display: none;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            z-index: -1;
+            transition: 0.5s;
         }
 
         .cta-btn:hover:before {
-            display: none;
+            left: 100%;
         }
 
         /* Profile image area */
@@ -372,11 +443,12 @@
             width: calc(100% - 10px);
             height: calc(100% - 10px);
             font-family: monospace;
-            font-size: 8px;
+            font-size: 6px;
             line-height: 1.2;
             color: #3877FF;
             overflow: hidden;
-            animation: typeCode 15s linear infinite;
+            animation: typeCode 20s linear infinite;
+            text-align: left;
         }
 
         @keyframes typeCode {
@@ -385,8 +457,37 @@
         }
 
         .pc-code-line {
-            margin-bottom: 2px;
+            margin-bottom: 3px;
             text-shadow: 0 0 5px rgba(56, 119, 255, 0.7);
+        }
+
+        .code-html {
+            color: #E44D26;
+        }
+
+        .code-css {
+            color: #42A5F5;
+        }
+
+        .code-js {
+            color: #FFCA28;
+        }
+
+        .code-tag {
+            color: #E44D26;
+        }
+
+        .code-attr {
+            color: #42A5F5;
+        }
+
+        .code-string {
+            color: #66BB6A;
+        }
+
+        .code-comment {
+            color: #78909C;
+            font-style: italic;
         }
 
         /* PC Stand */
@@ -798,177 +899,746 @@
                 right: 30px;
             }
         }
+
+        /* Mobile navigation menu */
+        .mobile-nav-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+            color: var(--text-light);
+            font-size: 1.5rem;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .mobile-nav-toggle {
+                display: block;
+            }
+            
+            .navbar-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: var(--dark-bg);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition-medium);
+            }
+            
+            .navbar-menu.active {
+                right: 0;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            }
+            
+            .navbar-menu li {
+                margin: 15px 0;
+            }
+        }
+
+        /* Music toggle button */
+        .music-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(56, 119, 255, 0.2);
+            border: none;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            transition: var(--transition-fast);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .music-toggle:hover {
+            background: rgba(56, 119, 255, 0.4);
+            transform: translateY(-3px);
+        }
+        
+        /* PC Model Styling */
+        .pc-model {
+            width: 320px;
+            height: 320px;
+            position: relative;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        .pc-base {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateY(-20deg) rotateX(10deg);
+            transition: transform 0.5s ease;
+        }
+        
+        .pc-base:hover {
+            transform: rotateY(0deg) rotateX(5deg);
+        }
+        
+        .pc-stand {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 20px;
+            background: #1a1a1a;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .pc-screen {
+            width: 280px;
+            height: 200px;
+            background: #111;
+            border: 10px solid #1a1a1a;
+            border-radius: 5px;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* Project Cards */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            transition: var(--transition-medium);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+        
+        .project-image {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+        
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .project-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(56, 119, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        
+        .project-card:hover .project-icon {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .project-icon i {
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+        
+        .project-content {
+            padding: 20px;
+        }
+        
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+        
+        .project-description {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .project-tag {
+            padding: 3px 10px;
+            background: rgba(56, 119, 255, 0.1);
+            color: var(--primary-color);
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .project-link {
+            display: inline-block;
+            padding: 8px 16px;
+            background: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: var(--transition-fast);
+        }
+        
+        .project-link:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .view-all-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .skill-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-fast);
+            border: 1px solid var(--border-color);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-color);
+        }
+        
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(56, 119, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .skill-icon i {
+            font-size: 30px;
+            color: var(--primary-color);
+        }
+        
+        .skill-icon img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+        
+        .skill-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+        
+        .skill-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .skill-level {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary-dark), var(--primary-light));
+            border-radius: 3px;
+            transition: width 1.5s cubic-bezier(0.1, 0.5, 0.3, 1);
+        }
+        
+        /* Footer */
+        .footer {
+            background: rgba(26, 26, 26, 0.8);
+            padding: 50px 0 20px;
+            position: relative;
+            margin-top: 80px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+        
+        .footer-logo i {
+            color: var(--primary-color);
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .footer-contact p {
+            margin-bottom: 10px;
+            color: var(--text-muted);
+        }
+        
+        .footer-contact i {
+            color: var(--primary-color);
+            margin-right: 8px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .mobile-nav-toggle {
+                display: block;
+            }
+            
+            .navbar-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: var(--dark-bg);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition-medium);
+            }
+            
+            .navbar-menu.active {
+                right: 0;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            }
+            
+            .navbar-menu li {
+                margin: 15px 0;
+            }
+            
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 20px 0;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .pc-model {
+                width: 280px;
+                height: 280px;
+                margin-bottom: 30px;
+            }
+            
+            .pc-screen {
+                width: 240px;
+                height: 180px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 20px;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            .pc-model {
+                width: 220px;
+                height: 220px;
+            }
+            
+            .pc-screen {
+                width: 200px;
+                height: 140px;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 15px;
+            }
+            
+            .skill-card {
+                padding: 15px;
+            }
+            
+            .skill-icon {
+                width: 50px;
+                height: 50px;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Animated background -->
-    <div class="bg-animation"></div>
-    
-    <!-- Particles background -->
-    <div id="particles-js" class="particles"></div>
+    <!-- Background music control -->
+    <button id="musicToggle" class="music-toggle">
+        <i class="fas fa-volume-mute"></i>
+    </button>
+    <audio id="bgMusic" loop>
+        <source src="music/background.mp3" type="audio/mp3">
+    </audio>
 
-    <!-- Main container -->
-    <div class="main-container">
-        <!-- Content area -->
-        <div class="content-area" style="align-items: center; text-align: center;">
-            <!-- Animated shapes -->
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
+    <!-- Background particles animation -->
+    <div class="particles" id="particles-js"></div>
 
-            <!-- Social media icons -->
-            <div class="social-icons" style="position: fixed; z-index: 10;">
-                <a href="https://facebook.com" target="_blank">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://twitter.com" target="_blank">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="https://linkedin.com" target="_blank">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="https://github.com" target="_blank">
-                    <i class="fab fa-github"></i>
-                </a>
-            </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <i class="fas fa-laptop-code logo-icon"></i>
+                <span class="text-gradient">Alvin Joseph</span>
+            </a>
+            <button class="mobile-nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="navbar-menu">
+                <li><a href="index.html" class="navbar-link active">Home</a></li>
+                <li><a href="about.html" class="navbar-link">About</a></li>
+                <li><a href="projects.html" class="navbar-link">Projects</a></li>
+                <li><a href="contact.html" class="navbar-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-            <!-- Main content -->
-            <div class="content" style="display: flex; flex-direction: column; align-items: center;">
-                <p class="greeting">Hi there <span>👋</span></p>
-                <h1 class="name">I'm Alvin Joseph</h1>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <p class="greeting">Hello <span>👋</span>, I'm</p>
+                <h1 class="name text-gradient">Alvin Joseph</h1>
                 <h2 class="role">Web Developer</h2>
-                <p class="bio" style="max-width: 600px;">Tech-Savvy Web Developer | Full Stack PHP & Front-End Developer | MCA Graduate | Crafting Secure & Scalable Web Solutions | Full Stack Web Architect from Changanserry, Kerala.</p>
+                <p class="bio">Tech-Savvy Web Developer | Full Stack PHP & Front-End Developer | MCA Graduate | Crafting Secure & Scalable Web Solutions</p>
                 
-                <!-- Call to action buttons -->
-                <div class="cta-buttons" style="justify-content: center;">
-                    <a href="contact.html" class="cta-btn primary">
-                        <i class="fas fa-paper-plane"></i> Hire Me
+                <div class="social-icons">
+                    <a href="#" class="social-icon" data-tooltip="Facebook">
+                        <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="about.html" class="cta-btn secondary">
-                        <i class="fas fa-user"></i> About Me
+                    <a href="#" class="social-icon" data-tooltip="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon" data-tooltip="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-icon" data-tooltip="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+                
+                <div class="cta-buttons">
+                    <a href="contact.html" class="cta-btn primary">
+                        <i class="fas fa-paper-plane"></i> Contact Me
+                    </a>
+                    <a href="projects.html" class="cta-btn secondary">
+                        <i class="fas fa-eye"></i> View Projects
                     </a>
                 </div>
             </div>
-        </div>
-
-        <!-- Profile image area -->
-        <div class="profile-area">
-            <div class="pc-model-wrapper">
+            
+            <!-- 3D PC Model -->
+            <div class="hero-image">
                 <div class="pc-model">
-                    <div class="pc-monitor">
+                    <div class="pc-base">
+                        <div class="pc-stand"></div>
                         <div class="pc-screen">
                             <div class="pc-code">
-                                <div class="pc-code-line">
-                                    <span>
-                                        <span>
-                                            <span>
-                                                <span>
-                                                    <span>
-                                                        <span>
-                                                            <span>
-                                                                <span>
-                                                                    <span>
-                                                                        <span>
-                                                                            <span>
-                                                                                <span>
-                                                                                    <span>
-                                                                                        <span>
-                                                                                            <span>
-                                                                                                <span>
-                                                                                                    <span>
-                                                                                                        <span>
-                                                                                                            <span>
-                                                                                                                <span>
-                                                                                                                    <span>
-                                                                                                                        <span>
-                                                                                                                            <span>
-                                                                                                                                <span>
-                                                                                                                                    <span>
-                                                                                                                                        <span>
-                                                                                                                                    </span>
-                                                                                                                                </span>
-                                                                                                                            </span>
-                                                                                                                        </span>
-                                                                                                                    </span>
-                                                                                                                </span>
-                                                                                                            </span>
-                                                                                                        </span>
-                                                                                                    </span>
-                                                                                                </span>
-                                                                                            </span>
-                                                                                        </span>
-                                                                                    </span>
-                                                                                </span>
-                                                                            </span>
-                                                                        </span>
-                                                                    </span>
-                                                                </span>
-                                                            </span>
-                                                        </span>
-                                                    </span>
-                                                </span>
-                                            </span>
-                                        </span>
-                                    </span>
-                                </span>
-                            </span>
+                                <div class="pc-code-line"><span class="code-html">&lt;!DOCTYPE html&gt;</span></div>
+                                <div class="pc-code-line"><span class="code-html">&lt;html lang=<span class="code-string">"en"</span>&gt;</span></div>
+                                <div class="pc-code-line"><span class="code-html">&lt;head&gt;</span></div>
+                                <div class="pc-code-line">  <span class="code-html">&lt;meta charset=<span class="code-string">"UTF-8"</span>&gt;</span></div>
+                                <div class="pc-code-line">  <span class="code-html">&lt;meta name=<span class="code-string">"viewport"</span> content=<span class="code-string">"width=device-width, initial-scale=1.0"</span>&gt;</span></div>
+                                <div class="pc-code-line">  <span class="code-html">&lt;title&gt;</span>Alvin Joseph - Web Developer<span class="code-html">&lt;/title&gt;</span></div>
+                                <div class="pc-code-line">  <span class="code-html">&lt;link rel=<span class="code-string">"stylesheet"</span> href=<span class="code-string">"style.css"</span>&gt;</span></div>
+                                <div class="pc-code-line"><span class="code-html">&lt;/head&gt;</span></div>
+                                <div class="pc-code-line"><span class="code-html">&lt;body&gt;</span></div>
+                                <div class="pc-code-line">  <span class="code-comment">&lt;!-- Hero Section --&gt;</span></div>
+                                <div class="pc-code-line">  <span class="code-html">&lt;section class=<span class="code-string">"hero"</span>&gt;</span></div>
+                                <div class="pc-code-line">    <span class="code-html">&lt;div class=<span class="code-string">"container"</span>&gt;</span></div>
+                                <div class="pc-code-line">      <span class="code-html">&lt;h1&gt;</span>Hi, I'm <span class="code-html">&lt;span&gt;</span>Alvin Joseph<span class="code-html">&lt;/span&gt;&lt;/h1&gt;</span></div>
+                                <div class="pc-code-line">      <span class="code-html">&lt;h2&gt;</span>Web Developer<span class="code-html">&lt;/h2&gt;</span></div>
+                                <div class="pc-code-line">      <span class="code-html">&lt;p&gt;</span>Crafting beautiful web experiences<span class="code-html">&lt;/p&gt;</span></div>
+                                <div class="pc-code-line">    <span class="code-html">&lt;/div&gt;</span></div>
+                                <div class="pc-code-line">  <span class="code-html">&lt;/section&gt;</span></div>
+                                <div class="pc-code-line"></div>
+                                <div class="pc-code-line">  <span class="code-comment">/* CSS Styles */</span></div>
+                                <div class="pc-code-line">  <span class="code-css">.hero {</span></div>
+                                <div class="pc-code-line">    <span class="code-css">height: 100vh;</span></div>
+                                <div class="pc-code-line">    <span class="code-css">display: flex;</span></div>
+                                <div class="pc-code-line">    <span class="code-css">align-items: center;</span></div>
+                                <div class="pc-code-line">    <span class="code-css">background: linear-gradient(135deg, #111, #333);</span></div>
+                                <div class="pc-code-line">  <span class="code-css">}</span></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="pc-stand"></div>
-                    <div class="pc-tower">
-                        <div class="pc-tower-front"></div>
-                    </div>
-                    <div class="power-button"></div>
-                    <div class="power-light"></div>
-                    <div class="drive-bay"></div>
-                    <div class="pc-vent">
-                        <div class="vent-line"></div>
-                    </div>
-                    <div class="pc-keyboard">
-                        <div class="keyboard-keys">
-                            <div class="key"></div>
-                            <div class="key"></div>
-                            <div class="key"></div>
-                            <div class="key"></div>
-                            <div class="key"></div>
-                            <div class="key"></div>
-                            <div class="key"></div>
-                            <div class="key"></div>
-                            <div class="key"></div>
-                            <div class="key"></div>
-                            <div class="key"></div>
-                            <div class="key"></div>
-                            <div class="key"></div>
-                            <div class="key"></div>
-                            <div class="key"></div>
-                        </div>
-                    </div>
-                    <div class="pc-mouse">
-                        <div class="mouse-button"></div>
-                        <div class="mouse-button"></div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Music Player -->
-        <div class="music-player">
-            <p>Listen while you explore</p>
-            <div class="player-controls">
-                <i class="fas fa-play play-btn"></i>
-                <div class="song-info">
-                    <span class="song-title">Background Ambience</span>
+    <!-- Featured Projects Section -->
+    <section class="section featured-projects">
+        <div class="container">
+            <h2 class="section-title text-gradient">Featured Projects</h2>
+            
+            <div class="projects-grid">
+                <!-- E-Farming Project -->
+                <div class="project-card animate-fade-in animate-delay-1">
+                    <div class="project-image">
+                        <img src="image/agric.jpg" alt="E-Farming Project">
+                        <div class="project-overlay">
+                            <div class="project-icon">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">E-Farming System</h3>
+                        <p class="project-description">A comprehensive digital platform revolutionizing traditional farming practices with modern technology solutions.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">PHP</span>
+                            <span class="project-tag">MySQL</span>
+                            <span class="project-tag">JavaScript</span>
+                        </div>
+                        <a href="e-farming.html" class="project-link">View Project</a>
+                    </div>
                 </div>
-                <audio id="background-music" src="music/background.mp3"></audio>
+
+                <!-- IPL Prediction Project -->
+                <div class="project-card animate-fade-in animate-delay-2">
+                    <div class="project-image">
+                        <img src="image/ipl.jpeg" alt="IPL Prediction Project">
+                        <div class="project-overlay">
+                            <div class="project-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">IPL Score Prediction</h3>
+                        <p class="project-description">Machine learning system for predicting cricket scores with analytics for Indian Premier League matches.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">ML</span>
+                            <span class="project-tag">Data Science</span>
+                        </div>
+                        <a href="ipl-prediction.html" class="project-link">View Project</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="view-all-container">
+                <a href="projects.html" class="cta-btn secondary">View All Projects</a>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Particles.js for background animation -->
+    <!-- Skills Section -->
+    <section class="section skills-section">
+        <div class="container">
+            <h2 class="section-title text-gradient">Technical Skills</h2>
+            
+            <div class="skills-grid">
+                <!-- HTML Skill -->
+                <div class="skill-card animate-fade-in animate-delay-1">
+                    <div class="skill-icon">
+                        <img src="image/html.jpeg" alt="HTML">
+                    </div>
+                    <div class="skill-name">HTML</div>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 0%" data-level="95%"></div>
+                    </div>
+                </div>
+                
+                <!-- CSS Skill -->
+                <div class="skill-card animate-fade-in animate-delay-2">
+                    <div class="skill-icon">
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <div class="skill-name">CSS</div>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 0%" data-level="90%"></div>
+                    </div>
+                </div>
+                
+                <!-- JavaScript Skill -->
+                <div class="skill-card animate-fade-in animate-delay-3">
+                    <div class="skill-icon">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <div class="skill-name">JavaScript</div>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 0%" data-level="85%"></div>
+                    </div>
+                </div>
+                
+                <!-- PHP Skill -->
+                <div class="skill-card animate-fade-in animate-delay-4">
+                    <div class="skill-icon">
+                        <i class="fab fa-php"></i>
+                    </div>
+                    <div class="skill-name">PHP</div>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 0%" data-level="80%"></div>
+                    </div>
+                </div>
+                
+                <!-- Python Skill -->
+                <div class="skill-card animate-fade-in animate-delay-1">
+                    <div class="skill-icon">
+                        <img src="image/python.jpeg" alt="Python">
+                    </div>
+                    <div class="skill-name">Python</div>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 0%" data-level="75%"></div>
+                    </div>
+                </div>
+                
+                <!-- C Language Skill -->
+                <div class="skill-card animate-fade-in animate-delay-2">
+                    <div class="skill-icon">
+                        <img src="image/c.jpeg" alt="C Programming">
+                    </div>
+                    <div class="skill-name">C</div>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 0%" data-level="70%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-laptop-code"></i>
+                    <span class="text-gradient">Alvin Joseph</span>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-icon" data-tooltip="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon" data-tooltip="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon" data-tooltip="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-icon" data-tooltip="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+                <div class="footer-contact">
+                    <p><i class="fas fa-envelope"></i> alvinjoseph@example.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Changanserry, Kerala, India</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Alvin Joseph. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Particles.js -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <!-- Main JavaScript -->
     <script>
+        // Initialize particles.js
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize particles
             particlesJS('particles-js', {
                 "particles": {
                     "number": {
@@ -982,11 +1652,15 @@
                         "value": "#3877FF"
                     },
                     "shape": {
-                        "type": "circle"
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        }
                     },
                     "opacity": {
                         "value": 0.5,
-                        "random": false
+                        "random": true
                     },
                     "size": {
                         "value": 3,
@@ -1021,44 +1695,112 @@
                             "mode": "push"
                         },
                         "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 140,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        }
                     }
                 },
                 "retina_detect": true
             });
 
-            // 3D effect on mousemove
-            const content = document.querySelector('.content');
-            const profileWrapper = document.querySelector('.pc-model-wrapper');
+            // Animate skill bars on scroll
+            const skillLevels = document.querySelectorAll('.skill-level');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const level = entry.target.getAttribute('data-level');
+                        entry.target.style.width = level;
+                    }
+                });
+            }, { threshold: 0.1 });
             
-            document.addEventListener('mousemove', function(e) {
-                let xAxis = (window.innerWidth / 2 - e.pageX) / 30;
-                let yAxis = (window.innerHeight / 2 - e.pageY) / 30;
-                
-                content.style.transform = `translateZ(20px) rotateX(${yAxis}deg) rotateY(${-xAxis}deg)`;
-                profileWrapper.style.transform = `translate(-50%, -50%) rotateY(${xAxis}deg)`;
+            skillLevels.forEach(level => {
+                observer.observe(level);
             });
-
-            // Reset on mouse leave
-            document.addEventListener('mouseleave', function() {
-                content.style.transform = 'translateZ(20px) rotateX(0deg) rotateY(0deg)';
-                profileWrapper.style.transform = 'translate(-50%, -50%) rotateY(-5deg)';
-            });
-
-            // Music Player functionality
-            const playBtn = document.querySelector('.play-btn');
-            const audio = document.getElementById('background-music');
             
-            playBtn.addEventListener('click', function() {
-                if (audio.paused) {
-                    audio.play();
-                    playBtn.classList.remove('fa-play');
-                    playBtn.classList.add('fa-pause');
+            // Mobile menu toggle
+            const menuToggle = document.querySelector('.mobile-nav-toggle');
+            const navMenu = document.querySelector('.navbar-menu');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                    
+                    // Change icon from bars to times
+                    const icon = menuToggle.querySelector('i');
+                    if (icon.classList.contains('fa-bars')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+            
+            // Background music toggle
+            const musicToggle = document.getElementById('musicToggle');
+            const bgMusic = document.getElementById('bgMusic');
+            let isMusicPlaying = false;
+            
+            if (musicToggle && bgMusic) {
+                musicToggle.addEventListener('click', () => {
+                    const icon = musicToggle.querySelector('i');
+                    
+                    if (isMusicPlaying) {
+                        bgMusic.pause();
+                        icon.classList.remove('fa-volume-up');
+                        icon.classList.add('fa-volume-mute');
+                    } else {
+                        bgMusic.play();
+                        icon.classList.remove('fa-volume-mute');
+                        icon.classList.add('fa-volume-up');
+                    }
+                    
+                    isMusicPlaying = !isMusicPlaying;
+                });
+            }
+            
+            // Navbar scroll effect
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
                 } else {
-                    audio.pause();
-                    playBtn.classList.remove('fa-pause');
-                    playBtn.classList.add('fa-play');
+                    navbar.classList.remove('scrolled');
                 }
             });
+            
+            // Add animation on scroll
+            const animateOnScroll = (elements, className) => {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add(className);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                elements.forEach(element => {
+                    observer.observe(element);
+                });
+            };
+            
+            // Animate project cards
+            const projectCards = document.querySelectorAll('.project-card');
+            animateOnScroll(projectCards, 'animate-fade-in');
+            
+            // Animate section titles
+            const sectionTitles = document.querySelectorAll('.section-title');
+            animateOnScroll(sectionTitles, 'animate-fade-in');
         });
     </script>
 </body>
