@@ -2091,3 +2091,14 @@ p {
 .side-social-icons {
     display: none;
 }
+
+/* Hide performance stats */
+.performance-stats {
+    display: none;
+}
+
+@media screen and (min-width: 1024px) {
+    .performance-stats {
+        display: none;
+    }
+}

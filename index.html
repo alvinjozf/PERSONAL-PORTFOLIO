@@ -1366,34 +1366,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Only run for desktop devices
             if (window.innerWidth >= 1024) {
-                // Create performance stats container
-                const perfStats = document.createElement('div');
-                perfStats.className = 'performance-stats';
-                
-                // Add FPS counter
-                const fpsElement = document.createElement('div');
-                fpsElement.innerHTML = 'FPS: <span class="stat-value" id="fps-value">99</span>';
-                
-                // Add render latency
-                const latencyElement = document.createElement('div');
-                latencyElement.innerHTML = 'Render Latency: <span class="stat-value" id="latency-value">N/A</span>';
-                
-                // Add CPU utilization
-                const cpuElement = document.createElement('div');
-                cpuElement.innerHTML = 'CPU Utilization: <span class="stat-value" id="cpu-value">31%</span>';
-                
-                // Add GPU utilization
-                const gpuElement = document.createElement('div');
-                gpuElement.innerHTML = 'GPU Utilization: <span class="stat-value" id="gpu-value">0%</span>';
-                
-                // Append all elements
-                perfStats.appendChild(fpsElement);
-                perfStats.appendChild(latencyElement);
-                perfStats.appendChild(cpuElement);
-                perfStats.appendChild(gpuElement);
-                
-                // Add to body
-                document.body.appendChild(perfStats);
+                // Performance stats have been removed
                 
                 // Add mouse parallax effect for hero section
                 const heroContent = document.querySelector('.hero-content');
@@ -1409,22 +1382,6 @@
                         heroText.style.transform = `translateZ(50px) translateX(${-xPos / 2}px) translateY(${-yPos / 2}px)`;
                     });
                 }
-                
-                // Simulate performance metrics
-                let fps = 99;
-                setInterval(function() {
-                    // Random FPS between 97-100
-                    fps = Math.floor(Math.random() * 4) + 97;
-                    document.getElementById('fps-value').textContent = fps;
-                    
-                    // Random CPU utilization between 29-35%
-                    const cpu = Math.floor(Math.random() * 7) + 29;
-                    document.getElementById('cpu-value').textContent = cpu + '%';
-                    
-                    // Random GPU utilization between 0-3%
-                    const gpu = Math.floor(Math.random() * 4);
-                    document.getElementById('gpu-value').textContent = gpu + '%';
-                }, 1000);
             }
         });
     </script>
@@ -1443,29 +1400,6 @@
 
     <!-- Background particles animation -->
     <div class="particles" id="particles-js"></div>
-
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container navbar-container">
-            <a href="index.html" class="navbar-logo">
-                <div class="logo-container">
-                    <i class="fas fa-laptop-code logo-icon"></i>
-                    <div class="logo-glow"></div>
-                </div>
-                <span class="text-gradient">Alvin Joseph</span>
-            </a>
-            <button class="mobile-nav-toggle">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="navbar-menu">
-                <li><a href="index.html" class="navbar-link active">Home</a></li>
-                <li><a href="about.html" class="navbar-link">About Me</a></li>
-                <li><a href="#skills" class="navbar-link">Skills</a></li>
-                <li><a href="projects.html" class="navbar-link">Projects</a></li>
-                <li><a href="#certifications" class="navbar-link">Certifications</a></li>
-            </ul>
-        </div>
-    </nav>
 
     <!-- Hero Section -->
     <section class="hero">
