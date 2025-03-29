@@ -1361,6 +1361,80 @@
             }
         }
     </style>
+    <!-- Add PC performance monitoring script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Only run on desktop devices
+            if (window.innerWidth >= 1024) {
+                // Add performance monitoring elements
+                const performanceDiv = document.createElement('div');
+                performanceDiv.className = 'performance-stats';
+                
+                // FPS Counter
+                const fpsDiv = document.createElement('div');
+                fpsDiv.className = 'stat-item';
+                fpsDiv.innerHTML = 'FPS: <span class="stat-value fps-value">0</span>';
+                
+                // Render Latency
+                const latencyDiv = document.createElement('div');
+                latencyDiv.className = 'stat-item';
+                latencyDiv.innerHTML = 'Render Latency: <span class="stat-value latency-value">0 ms</span>';
+                
+                // CPU Usage
+                const cpuDiv = document.createElement('div');
+                cpuDiv.className = 'stat-item';
+                cpuDiv.innerHTML = 'CPU Utilization: <span class="stat-value cpu-value">0%</span>';
+                
+                // GPU Usage (placeholder, can't actually measure without special APIs)
+                const gpuDiv = document.createElement('div');
+                gpuDiv.className = 'stat-item';
+                gpuDiv.innerHTML = 'GPU Utilization: <span class="stat-value gpu-value">0%</span>';
+                
+                // Add to performance div
+                performanceDiv.appendChild(fpsDiv);
+                performanceDiv.appendChild(latencyDiv);
+                performanceDiv.appendChild(cpuDiv);
+                performanceDiv.appendChild(gpuDiv);
+                
+                // Add to body
+                document.body.appendChild(performanceDiv);
+                
+                // FPS calculation
+                let frameCount = 0;
+                let lastTime = performance.now();
+                let fps = 0;
+                
+                function updateFPS() {
+                    frameCount++;
+                    const currentTime = performance.now();
+                    const elapsed = currentTime - lastTime;
+                    
+                    if (elapsed >= 1000) {
+                        fps = Math.round((frameCount * 1000) / elapsed);
+                        frameCount = 0;
+                        lastTime = currentTime;
+                        
+                        // Update FPS display
+                        const fpsValue = document.querySelector('.fps-value');
+                        if (fpsValue) {
+                            fpsValue.textContent = fps;
+                            fpsValue.className = 'stat-value fps-value ' + 
+                                (fps >= 55 ? 'fps-high' : fps >= 30 ? 'fps-medium' : 'fps-low');
+                        }
+                        
+                        // Simulate other metrics for demo purposes
+                        document.querySelector('.latency-value').textContent = Math.round(1000/fps) + ' ms';
+                        document.querySelector('.cpu-value').textContent = Math.min(99, Math.round(30 + Math.random() * 10)) + '%';
+                        document.querySelector('.gpu-value').textContent = Math.round(Math.random() * 20) + '%';
+                    }
+                    
+                    requestAnimationFrame(updateFPS);
+                }
+                
+                requestAnimationFrame(updateFPS);
+            }
+        });
+    </script>
 </head>
 <body>
     <!-- Background music control -->
@@ -1388,10 +1462,11 @@
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="navbar-menu">
-                <li><a href="index.html" class="navbar-link active">Home</a></li>
-                <li><a href="about.html" class="navbar-link">About</a></li>
-                <li><a href="projects.html" class="navbar-link">Projects</a></li>
-                <li><a href="contact.html" class="navbar-link">Contact</a></li>
+                <li><a href="index.html" class="navbar-link active">&lt;/Home&gt;</a></li>
+                <li><a href="about.html" class="navbar-link">&lt;/AboutMe&gt;</a></li>
+                <li><a href="#skills" class="navbar-link">&lt;/Skills&gt;</a></li>
+                <li><a href="projects.html" class="navbar-link">&lt;/Projects&gt;</a></li>
+                <li><a href="#certifications" class="navbar-link">&lt;/Certifications&gt;</a></li>
             </ul>
         </div>
     </nav>
@@ -1407,19 +1482,19 @@
                 
                 <div class="social-icons">
                     <a href="#" class="social-icon" data-tooltip="Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
+                    <i class="fab fa-facebook-f"></i>
+                </a>
                     <a href="#" class="social-icon" data-tooltip="Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
+                    <i class="fab fa-twitter"></i>
+                </a>
                     <a href="#" class="social-icon" data-tooltip="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
                     <a href="#" class="social-icon" data-tooltip="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                </div>
-                
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+
                 <div class="cta-buttons">
                     <a href="contact.html" class="cta-btn primary">
                         <i class="fas fa-paper-plane"></i> Contact Me
@@ -1469,7 +1544,7 @@
                                 <div class="pc-code-line">    <span class="code-css">display: flex;</span></div>
                                 <div class="pc-code-line">    <span class="code-css">align-items: center;</span></div>
                                 <div class="pc-code-line">  <span class="code-css">}</span></div>
-                            </div>
+        </div>
                         </div>
                     </div>
                 </div>
@@ -1490,9 +1565,9 @@
                         <div class="project-overlay">
                             <div class="project-icon">
                                 <i class="fas fa-seedling"></i>
-                            </div>
-                        </div>
                     </div>
+                </div>
+            </div>
                     <div class="project-content">
                         <h3 class="project-title">E-Farming System</h3>
                         <p class="project-description">A comprehensive digital platform revolutionizing traditional farming practices with modern technology solutions.</p>
@@ -1502,8 +1577,8 @@
                             <span class="project-tag">JavaScript</span>
                         </div>
                         <a href="e-farming.html" class="project-link">View Project</a>
-                    </div>
-                </div>
+            </div>
+        </div>
 
                 <!-- IPL Prediction Project -->
                 <div class="project-card animate-fade-in animate-delay-2">
@@ -1512,7 +1587,7 @@
                         <div class="project-overlay">
                             <div class="project-icon">
                                 <i class="fas fa-chart-line"></i>
-                            </div>
+                </div>
                         </div>
                     </div>
                     <div class="project-content">
@@ -1524,9 +1599,9 @@
                             <span class="project-tag">Data Science</span>
                         </div>
                         <a href="ipl-prediction.html" class="project-link">View Project</a>
-                    </div>
-                </div>
             </div>
+        </div>
+    </div>
 
             <div class="view-all-container">
                 <a href="projects.html" class="cta-btn secondary">View All Projects</a>
@@ -1772,7 +1847,7 @@
                         bgMusic.pause();
                         icon.classList.remove('fa-volume-up');
                         icon.classList.add('fa-volume-mute');
-                    } else {
+                } else {
                         bgMusic.play();
                         icon.classList.remove('fa-volume-mute');
                         icon.classList.add('fa-volume-up');
@@ -1814,6 +1889,26 @@
             // Animate section titles
             const sectionTitles = document.querySelectorAll('.section-title');
             animateOnScroll(sectionTitles, 'animate-fade-in');
+        });
+
+        // Add animation for PC model on desktop
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.innerWidth >= 1024) {
+                const pcModel = document.querySelector('.pc-model');
+                if (pcModel) {
+                    // Add mouse movement tracking for 3D effect
+                    document.addEventListener('mousemove', function(e) {
+                        const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+                        const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+                        pcModel.style.transform = `perspective(1000px) rotateY(${xAxis}deg) rotateX(${-yAxis}deg)`;
+                    });
+                    
+                    // Reset on mouse leave
+                    document.addEventListener('mouseleave', function() {
+                        pcModel.style.transform = 'perspective(1000px) rotateY(-15deg) rotateX(10deg)';
+                    });
+                }
+            }
         });
     </script>
 </body>
