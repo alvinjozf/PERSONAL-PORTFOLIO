@@ -1856,96 +1856,276 @@ p {
 
 /* PC-specific enhancements */
 @media screen and (min-width: 1024px) {
-    /* Larger font sizes for PC display */
     html {
-        font-size: 24px;
+        font-size: 26px;
+    }
+    
+    /* Header section optimizations */
+    .greeting {
+        font-size: 3.5rem;
+        margin-bottom: 1.2rem;
     }
     
     .name {
-        font-size: 9rem;
-        letter-spacing: -2px;
-        margin-bottom: 1.5rem;
+        font-size: 10rem;
+        letter-spacing: -3px;
+        line-height: 0.9;
+        margin-bottom: 2.5rem;
     }
     
     .role {
-        font-size: 3.5rem;
-        margin-top: 2rem;
-        margin-bottom: 1.5rem;
+        font-size: 5rem;
+        letter-spacing: 4px;
+        margin-bottom: 2rem;
     }
     
     .bio {
-        font-size: 1.5rem;
+        font-size: 2rem;
         line-height: 1.8;
-        max-width: 850px;
+        padding-left: 3.5rem;
+        border-left-width: 8px;
+        max-width: 1100px;
     }
     
-    .greeting {
-        font-size: 2.8rem;
+    /* Navbar optimizations */
+    .navbar {
+        padding: 1.5rem 0;
+        background: rgba(10, 10, 10, 0.75);
     }
     
-    /* Larger navigation */
+    .navbar-container {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+    
+    .navbar-menu {
+        gap: 5rem;
+    }
+    
     .navbar-link {
-        font-size: 1.4rem;
+        font-size: 1.8rem;
+        font-weight: 600;
+        letter-spacing: 1px;
     }
     
-    /* Larger CTA buttons */
+    .navbar-link::before {
+        content: '</';
+        position: absolute;
+        left: -30px;
+        opacity: 0;
+        color: var(--primary-color);
+        transition: all 0.3s ease;
+    }
+    
+    .navbar-link::after {
+        content: '>';
+        position: absolute;
+        right: -20px;
+        opacity: 0;
+        color: var(--primary-color);
+        transition: all 0.3s ease;
+    }
+    
+    .navbar-link:hover::before,
+    .navbar-link:hover::after,
+    .navbar-link.active::before, 
+    .navbar-link.active::after {
+        opacity: 1;
+    }
+    
+    /* CTA Buttons */
+    .cta-buttons {
+        gap: 3rem;
+        margin-top: 3.5rem;
+    }
+    
     .cta-btn {
-        font-size: 1.3rem;
-        padding: 1.5rem 3rem;
+        padding: 2.2rem 5rem;
+        font-size: 2rem;
+        min-width: 350px;
+        letter-spacing: 3px;
     }
     
-    /* Larger skills and project text */
-    .skill-name {
-        font-size: 2.2rem;
+    /* Social Icons */
+    .social-icons {
+        gap: 2rem;
     }
     
-    .project-title {
+    .social-icon {
+        width: 100px;
+        height: 100px;
         font-size: 2.5rem;
     }
     
-    .project-description {
-        font-size: 1.4rem;
+    /* Hero layout */
+    .hero {
+        height: 110vh;
+        padding: 120px 0;
     }
     
-    .project-tag {
-        font-size: 1.1rem;
-        padding: 0.6rem 1.2rem;
+    .hero-content {
+        max-width: 90%;
+        margin: 0 auto;
+        gap: 12rem;
+    }
+    
+    /* PC Model */
+    .pc-model {
+        width: 900px;
+        height: 900px;
+        transform: perspective(1500px) rotateY(-20deg) rotateX(10deg);
+    }
+    
+    .pc-screen {
+        width: 750px;
+        height: 520px;
+        border-width: 32px;
+    }
+    
+    .pc-stand {
+        width: 280px;
+        height: 60px;
+    }
+    
+    /* Sections */
+    .section {
+        padding: 180px 0;
     }
     
     .section-title {
-        font-size: 5.5rem;
+        font-size: 7rem;
+        letter-spacing: -1px;
+        margin-bottom: 8rem;
+    }
+    
+    .section-title::after {
+        width: 260px;
+        height: 12px;
+        bottom: -30px;
+    }
+    
+    /* Project cards */
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 70px;
+    }
+    
+    .project-card {
+        height: 680px;
+    }
+    
+    .project-image {
+        height: 380px;
+    }
+    
+    .project-content {
+        padding: 45px;
+    }
+    
+    .project-title {
+        font-size: 3.2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .project-description {
+        font-size: 1.8rem;
+    }
+    
+    /* Skills section */
+    .skills-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 60px;
+    }
+    
+    .skill-card {
+        height: 320px;
+        padding: 50px;
+    }
+    
+    .skill-icon {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .skill-icon i, .skill-icon img {
+        font-size: 65px;
+    }
+    
+    .skill-name {
+        font-size: 2.8rem;
+    }
+    
+    .skill-bar {
+        height: 18px;
+    }
+    
+    /* Footer section */
+    .footer {
+        padding: 100px 0 40px;
+    }
+    
+    .footer-logo {
+        font-size: 3.5rem;
+    }
+    
+    .footer-contact p {
+        font-size: 1.6rem;
+    }
+    
+    /* Performance stats for PC gaming aesthetic */
+    .performance-stats {
+        position: fixed;
+        top: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 10px 15px;
+        font-family: monospace;
+        font-size: 0.85rem;
+        color: #fff;
+        border-bottom-left-radius: 10px;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .stat-value {
+        color: var(--primary-color);
+        font-weight: bold;
     }
 }
 
-/* Increase main content font size */
-html {
-    font-size: 22px;
-}
-
-body {
-    font-size: 1.2rem;
-}
-
-h1 {
-    font-size: 6rem;
-}
-
-h2 {
-    font-size: 4rem;
-}
-
-h3 {
-    font-size: 3rem;
-}
-
-p {
-    font-size: 1.2rem;
-    line-height: 1.8;
-}
-
-/* Web Developer header text */
-.role {
-    font-size: 2.5rem;
-    font-weight: 700;
-    letter-spacing: 2px;
+/* PC animation enhancements */
+@media screen and (min-width: 1024px) {
+    /* Add mouse parallax effect for hero section */
+    .hero-content {
+        transform-style: preserve-3d;
+        position: relative;
+    }
+    
+    .hero-text {
+        transform: translateZ(50px);
+    }
+    
+    .pc-model {
+        transform: translateZ(100px) rotateY(-20deg) rotateX(10deg);
+    }
+    
+    /* Enhanced hover effects */
+    .navbar-link:hover {
+        text-shadow: 0 0 15px var(--primary-color);
+    }
+    
+    .cta-btn:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(56, 119, 255, 0.5);
+    }
+    
+    .project-card:hover {
+        transform: translateY(-20px) scale(1.03);
+    }
+    
+    .skill-card:hover {
+        transform: translateY(-15px) scale(1.05);
+    }
 }
