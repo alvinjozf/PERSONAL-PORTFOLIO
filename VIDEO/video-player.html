@@ -42,6 +42,7 @@
             border-radius: 10px;
             overflow: hidden;
             margin: 40px 0;
+            background-color: #000;
         }
         
         video {
@@ -132,6 +133,73 @@
             text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
         
+        /* Video error styling */
+        .video-error {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .video-error i {
+            font-size: 40px;
+            color: #FFC107;
+            margin-bottom: 20px;
+        }
+        
+        .video-error p {
+            margin: 5px 0;
+            color: var(--text-muted);
+        }
+        
+        .error-back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .error-back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Loading animation */
+        .loading-spinner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 5;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
         /* Responsive design */
         @media (max-width: 850px) {
             .video-container {
@@ -160,7 +228,7 @@
 </head>
 <body>
     <!-- Animated back button -->
-    <a href="../projects.html" class="back-button">
+    <a href="../index.html" class="back-button">
         <div class="back-circle">
             <i class="fas fa-arrow-left"></i>
         </div>
@@ -172,7 +240,10 @@
     
     <!-- Video container -->
     <div class="video-container">
-        <video controls autoplay id="project-video">
+        <div class="loading-spinner" id="loading-spinner">
+            <div class="spinner"></div>
+        </div>
+        <video controls id="project-video">
             <source src="" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -180,15 +251,23 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            const videoElement = document.getElementById('project-video');
+            const loadingSpinner = document.getElementById('loading-spinner');
+            
             // Get the video file name from URL
             const urlParams = new URLSearchParams(window.location.search);
             const videoFile = urlParams.get('video');
             
             if (videoFile) {
-                // Set video source - create a proper source element
-                const videoElement = document.getElementById('project-video');
+                // Fix for path resolution - remove any double slashes and fix path
+                let cleanVideoPath = videoFile.replace(/\/\//g, '/');
+                if (cleanVideoPath.startsWith('VIDEO/')) {
+                    cleanVideoPath = cleanVideoPath.substring(6); // Remove 'VIDEO/' prefix
+                }
+                
+                // Set video source
                 const sourceElement = document.createElement('source');
-                sourceElement.src = videoFile;
+                sourceElement.src = cleanVideoPath;
                 sourceElement.type = 'video/mp4';
                 
                 // Clear any existing sources and add the new one
@@ -196,16 +275,39 @@
                     videoElement.removeChild(videoElement.firstChild);
                 }
                 videoElement.appendChild(sourceElement);
-                videoElement.load(); // Important: reload the video with new source
                 
                 // Set title based on video name
-                const title = videoFile.includes('IPL') ? 'IPL Score Prediction Project' : 'E-FARMING Project';
+                const title = cleanVideoPath.includes('IPL') ? 'IPL Score Prediction Project' : 'E-FARMING Project';
                 document.querySelector('.video-title').textContent = title;
+                
+                // Hide loading spinner when video is loaded
+                videoElement.addEventListener('canplay', function() {
+                    loadingSpinner.style.display = 'none';
+                    videoElement.play();
+                });
+                
+                // Add error handling for video
+                videoElement.addEventListener('error', function() {
+                    console.error("Error loading video:", cleanVideoPath);
+                    loadingSpinner.style.display = 'none';
+                    document.querySelector('.video-container').innerHTML = `
+                        <div class="video-error">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <p>Sorry, there was an error loading the video.</p>
+                            <p>Path: ${cleanVideoPath}</p>
+                            <a href="../index.html" class="error-back-btn">Return to Homepage</a>
+                        </div>
+                    `;
+                });
+                
+                // Load the video
+                videoElement.load();
             } else {
                 // Default fallback if no video specified
-                const videoElement = document.getElementById('project-video');
+                const defaultVideo = 'farmer.mp4';
+                
                 const sourceElement = document.createElement('source');
-                sourceElement.src = './farmer.mp4';
+                sourceElement.src = defaultVideo;
                 sourceElement.type = 'video/mp4';
                 
                 // Clear any existing sources and add the new one
@@ -213,10 +315,34 @@
                     videoElement.removeChild(videoElement.firstChild);
                 }
                 videoElement.appendChild(sourceElement);
-                videoElement.load();
                 
+                // Set title
                 document.querySelector('.video-title').textContent = 'E-FARMING Project';
+                
+                // Hide loading spinner when video is loaded
+                videoElement.addEventListener('canplay', function() {
+                    loadingSpinner.style.display = 'none';
+                    videoElement.play();
+                });
+                
+                // Load the video
+                videoElement.load();
             }
+            
+            // Add timeout to show error if video doesn't load within 10 seconds
+            setTimeout(function() {
+                if (loadingSpinner.style.display !== 'none') {
+                    loadingSpinner.style.display = 'none';
+                    document.querySelector('.video-container').innerHTML = `
+                        <div class="video-error">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <p>Video is taking too long to load.</p>
+                            <p>There might be an issue with the file path or the video may be missing.</p>
+                            <a href="../index.html" class="error-back-btn">Return to Homepage</a>
+                        </div>
+                    `;
+                }
+            }, 10000);
         });
     </script>
 </body>
