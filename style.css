@@ -2395,3 +2395,49 @@ button[href*="project"],
     margin-bottom: 10px;
     cursor: pointer;
 }
+
+/* Watch Video Button Styling */
+.watch-video-btn {
+    display: inline-flex;
+    align-items: center;
+    background-color: rgba(56, 119, 255, 0.1);
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-top: 15px;
+    border: 1px solid rgba(56, 119, 255, 0.3);
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.watch-video-btn i {
+    margin-right: 8px;
+    font-size: 1.1rem;
+}
+
+.watch-video-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(56, 119, 255, 0.3);
+}
+
+/* Animation for the button */
+@keyframes pulse-button {
+    0% {
+        box-shadow: 0 0 0 0 rgba(56, 119, 255, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(56, 119, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(56, 119, 255, 0);
+    }
+}
+
+.watch-video-btn {
+    animation: pulse-button 2s infinite;
+}
