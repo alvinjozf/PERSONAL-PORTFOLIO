@@ -626,7 +626,7 @@
                     </div>
                     <div class="contact-detail">
                         <h4>Location</h4>
-                        <p>Changanserry, Kerala, India</p>
+                        <p>Changanaserry, Kottayam, India</p>
                     </div>
                 </div>
                 
@@ -887,7 +887,9 @@
             });
             
             messageInput.addEventListener('input', function() {
-                if (messageInput.value.trim().length >= 20)
+                if (messageInput.value.trim().length >= 20) {
+                    messageError.style.display = 'none';
+                }
             });
         });
     </script>
